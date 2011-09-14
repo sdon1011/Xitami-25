@@ -328,7 +328,7 @@ xml_save_string (
     ASSERT (item);
     init_charmaps ();                   /*  Initialise character maps        */
     xml_size = xml_item_size (item);
-    xml_string = mem_alloc (xml_size + 1000);
+    xml_string = mem_alloc (xml_size + 1);
     if (xml_string)
         xml_save_string_item (xml_string, item);
 
@@ -374,7 +374,7 @@ xml_item_size (XML_ITEM *item)
         if ((child = xml_first_child (item)))
           {
             /*  Count '>' and '</name>'                                      */
-            item_size += strlen (name) + 4;
+            item_size += strlen (item_name) + 4;
             for (child  = xml_first_child (item);
                  child != NULL;
                  child  = xml_next_sibling (child))
